@@ -94,6 +94,97 @@ document.querySelector('.dice').style.display='none';
 
 
       // 3. Update Result if result is not 1
+ /*
+############### SECOND  PHASE OF CODE ####################
+ 1. What is tertial operator
+ 2. How to add to remove and Toggle HTML Classes
+ */
+     if (dice!==1){
+
+      // Add results 
+
+      roundScores+=dice;
+      document.querySelector('#current--'+ activePlayer).textContent=roundScores;
+
+     }
+
+     else{
+        
+         nextPlayer();
+
+         
+
+    /*
+     ############### SECOND  PHASE OF CODE ####################
+         1. How to use Dry Principle
+         2. How to think game like programmer
+   */
+        
+         document.querySelector('.btn--hold').addEventListener('click', function(){
+
+          // To hold current score to global score
+
+
+          scores[activePlayer]+=roundScores
+
+          document.querySelector('#score--'+ activePlayer).textContent=scores[activePlayer]
+
+          //  ################    DONT REPEATE PRINCIPLE ##############
+          nextPlayer();
+          
+          // Winning game  
+
+          if(scores[activePlayer]>=100){
+
+            document.querySelector('#name--' + activePlayer).textContent='Winner!';
+            document.querySelector('.dice').style.display='none';
+
+          }
+          else{
+            nextPlayer()
+          }
+
+  
+   
+
+         });
+
+         function nextPlayer(){
+
+          activePlayer==0? activePlayer=1:activePlayer=0;
+          roundScores=0;
+ 
+          document.getElementById('current--0').textContent=0;
+          document.getElementById('current--1').textContent=0;
+         
+          // Using Toggle to add and remove class 
+ 
+          document.querySelector('.player--0').classList.toggle('player--active');
+          document.querySelector('.player--1').classList.toggle('player--active');
+          document.querySelector('.dice').style.display='none';
+         }
+
+
+       // Add next players
+     }
+
+         
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
 
  });
 
